@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;       /* Fluid width */
+            max-width: 1000px; /* Ensures it doesn't get too big on desktops */
+            aspect-ratio: 16 / 9; /* Maintains 16:9 ratio automatically */
+            background: #000;
+        }
+
+        #overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+            font-size: clamp(16px, 5vw, 32px); /* Scales text size with screen */
+            z-index: 10;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+        }
+
+        #rickroll-text {
+            display: none;
+            font-size: clamp(24px, 8vw, 48px);
+            font-weight: bold;
+            color: #ff0000;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <p>Debut Invitation</p>
+
+    <div class="video-container">
+        <div id="overlay" onclick="startVideo()">
+            Click to Open Invitation
+        </div>
+
+        <video id="myVideo" controls>
+            <source src="Debut pictures.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <h1 id="rickroll-text">GET RICKROLLED</h1>
+
+    <script>
+        function startVideo() {
+            const video = document.getElementById('myVideo');
+            const overlay = document.getElementById('overlay');
+            const text = document.getElementById('rickroll-text');
+
+            overlay.style.display = 'none';
+            text.style.display = 'block';
+            video.play();
+        }
+    </script>
+</body>
+</html>
